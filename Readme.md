@@ -8,7 +8,7 @@ The research paper can be found in the `paper` folder. If you have any ideas/com
 - Yasoob (ykhalid at colgate.edu)
 - Aaron  (agemberjacobson at colgate.edu)
 
-###Important Commands:
+**Important Commands:**
 
 - `nmcli dev wifi` for searching Wi-Fi on ubuntu
 - `sudo ifconfig wlp2s0 down` take down the interface
