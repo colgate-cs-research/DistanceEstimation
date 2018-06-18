@@ -8,3 +8,11 @@ The research paper can be found in the `paper` folder. If you have any ideas/com
 - Yasoob (ykhalid at colgate.edu)
 - Aaron  (agemberjacobson at colgate.edu)
 
+###Important Commands:
+
+- `nmcli dev wifi` for searching Wi-Fi on ubuntu
+- `sudo ifconfig wlp2s0 down` take down the interface
+- `sudo iwconfig wlp2s0 mode monitor` put the interface into monitor mode
+- `sudo ifconfig wlp2s0 up` put the interface back up
+- `sudo iwconfig wlp2s0 mode managed` put the interface into managed mode
+
