@@ -16,3 +16,4 @@ The research paper can be found in the `paper` folder. If you have any ideas/com
 - `sudo ifconfig wlp2s0 up` put the interface back up
 - `sudo iwconfig wlp2s0 mode managed` put the interface into managed mode
 - `sudo iwlist wlp2s0 scanning` actively scan nearby Wi-Fi networks
+- `sudo nmcli device wifi hotspot con-name my-hotspot ssid my-hotspot band bg password thisissocool` for setting hotspot through command-line
