@@ -22,6 +22,9 @@ The research paper can be found in the `paper` folder. If you have any ideas/com
 
 - Beacon Frame: type 0, subtype 8
 
+**Wireshark Filters**
+
+http://wifinigel.blogspot.com/2018/04/wireshark-capture-filters-for-80211.html
 
 **Sending & Sniffing Auth Requests**
 
@@ -58,3 +61,36 @@ You filter those incoming packets which have `Dot11Auth` layer. This will filter
 Sender: `auth_frame.py`
 Sniffer: `auth_sniffer.py`
 
+-----------------------
+
+Problems
+-------
+
+I have managed to send RTS frames. The RTS code is in `rts_frame.py` file. Initially I thought that my sender isn't working properly because my sniffer `rts_sniffer.py` wasn't giving any output. Then I used tcpdump to record and filter rts/cts frames and the frames sent from my MAC address were visible.
+
+- Command for sniffing:
+
+```
+sudo tcpdump -i wlp2s0 -s 0 -w test.pcap -Z ykhalid
+```
+
+- Command for filtering:
+
+```
+tcpdump -r test.pcap "subtype cts or subtype rts"
+```
+
+- Recorded response sample:
+
+```
+reading from file test.pcap, link-type IEEE802_11_RADIO (802.11 plus radiotap header)
+00:49:50.326884 1.0 Mb/s 2412 MHz 11b -18dBm signal antenna 3 Request-To-Send TA:c8:f7:33:da:b1:e1 (oui Unknown) 
+00:49:50.327213 1.0 Mb/s 2412 MHz 11b -16dBm signal antenna 3 Clear-To-Send RA:c8:f7:33:da:b1:e1 (oui Unknown) 
+00:49:50.327768 1.0 Mb/s 2412 MHz 11b -18dBm signal antenna 3 Request-To-Send TA:c8:f7:33:da:b1:e1 (oui Unknown) 
+00:49:50.328095 1.0 Mb/s 2412 MHz 11b -16dBm signal antenna 3 Clear-To-Send RA:c8:f7:33:da:b1:e1 (oui Unknown) 
+00:49:50.329634 1.0 Mb/s 2412 MHz 11b -18dBm signal antenna 3 Request-To-Send TA:c8:f7:33:da:b1:e1 (oui Unknown) 
+00:49:50.329960 1.0 Mb/s 2412 MHz 11b -16dBm signal antenna 3 Clear-To-Send RA:c8:f7:33:da:b1:e1 (oui Unknown) 
+00:49:50.331063 1.0 Mb/s 2412 MHz 11b -18dBm signal antenna 3 Request-To-Send TA:c8:f7:33:da:b1:e1 (oui Unknown) 
+```
+
+My question is: Are the aforementioned CTS frames sent by my hotspot? If not then why isn't my hotspot returning any CTS frame?
