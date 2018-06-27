@@ -21,3 +21,40 @@ The research paper can be found in the `paper` folder. If you have any ideas/com
 **Packet Types:**
 
 - Beacon Frame: type 0, subtype 8
+
+
+**Sending & Sniffing Auth Requests**
+
+You put the Wi-Fi card in monitor mode:
+
+```
+sudo ifconfig wlp2s0 down
+sudo iwconfig wlp2s0 mode monitor
+sudo ifconfig wlp2s0 up
+```
+
+You create an Auth packet using the following command:
+
+```
+Dot11(addr1=receiver, addr2=sender, addr3=receiver) / Dot11Auth(algo=0, seqnum=0x0001, status=0x0000)
+```
+
+You add a RadioTap header at the beginning and use the following command to send the packet:
+
+```
+send(frame)
+```
+ 
+On the sniffing PC, you put the Wi-Fi card into monitor mode:
+
+```
+sudo ifconfig wlp2s0 down
+sudo iwconfig wlp2s0 mode monitor
+sudo ifconfig wlp2s0 up
+```
+
+You filter those incoming packets which have `Dot11Auth` layer. This will filter the sender AND the receiver device because the receiver sends an Auth response and that too contains `Dot11Auth` layer.
+
+Sender: `auth_frame.py`
+Sniffer: `auth_sniffer.py`
+
