@@ -14,7 +14,7 @@ experiment was successful and I received acks for the sent packets.
 
 The is a similar to the above experiment. The only difference is that in this case I sent the packets to mobile
 receiver instead of ubuntu. I wanted to check whether the ack behaviour is similar for mobile devices as well 
-(which are our main target). The experiment was successful and I received acks for the sent packets.
+(which are our main target). The experiment was unsuccessful and I did not receive acks for the sent packets.
 
 - `test_monitor_mobile_wifi_off.pcap`
 
