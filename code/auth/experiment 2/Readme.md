@@ -16,6 +16,11 @@ The is a similar to the above experiment. The only difference is that in this ca
 receiver instead of ubuntu. I wanted to check whether the ack behaviour is similar for mobile devices as well 
 (which are our main target). The experiment was unsuccessful and I did not receive acks for the sent packets.
 
+- `test_monitor_mobile_unassociated.pcap`
+
+Similar to above experiment. The major difference was that the mobile was not connected to any AP. Still no
+luck. I did not receive any ack.
+
 - `test_monitor_mobile_wifi_off.pcap`
 
 This is again an edge-case experiment like the first one. In this case the receiver MAC address is near my 
